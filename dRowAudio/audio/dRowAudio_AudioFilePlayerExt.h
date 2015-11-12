@@ -137,7 +137,7 @@ private:
     ScopedPointer<FilteringAudioSource> filteringAudioSource;
 
     SoundTouchProcessor::PlaybackSettings currentSoundtouchSettings;
-    bool shouldBeLooping;
+    bool shouldBeLooping { false };
     double currentLoopStartTime, currentLoopEndTime;
     
     ValueTree libraryEntry;
