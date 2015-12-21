@@ -41,6 +41,11 @@ SoundTouchProcessor::SoundTouchProcessor()
     
     interleavedInputBuffer.malloc (interleavedInputBufferSize * 2);
     interleavedOutputBuffer.malloc (interleavedOutputBufferSize * 2);
+	
+    // need to do this, as when quickseek is not enabled, its liable (due to some bug in soundtouch,
+    // or in the way drowaudio uses it perhaps), to stall doing some virtually endless search
+    // for the right position, iterating over like 100k^2 samples etc ...
+    soundTouch.setSetting(SETTING_USE_QUICKSEEK, 1);
 }
 
 SoundTouchProcessor::~SoundTouchProcessor()

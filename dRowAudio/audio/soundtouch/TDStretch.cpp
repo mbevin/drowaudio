@@ -666,7 +666,13 @@ void TDStretch::processSamples()
         // crosscheck that we don't have buffer overflow...
         if ((int)inputBuffer.numSamples() < (offset + temp + overlapLength * 2))
         {
-            continue;    // just in case, shouldn't really happen
+            // need to break, not continue, else just putting into an infinite loop if+when this
+            // occurs (which it does indeed appear to, maybe due to thread-unsafe tempo-etc change?),
+            // and breaking (since actually turns-out we don't have enough samples to form a
+            // processing frame, as we initially thought... which i don't know what has to do with
+            // 'buffer overflow'?), is surely the desired behaviour here!?!?
+            break;
+            //continue;    // just in case, shouldn't really happen
         }
 
         outputBuffer.putSamples(inputBuffer.ptrBegin() + channels * (offset + overlapLength), (uint)temp);
