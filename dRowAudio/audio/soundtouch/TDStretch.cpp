@@ -47,6 +47,11 @@
 #include <math.h>
 #include <float.h>
 
+// just to help debug an issue that hopefully 'fixed' ...
+#ifndef _WIN32
+#include "BStats.h"
+#endif
+
 #include "STTypes.h"
 #include "cpu_detect.h"
 #include "TDStretch.h"
@@ -671,6 +676,11 @@ void TDStretch::processSamples()
             // and breaking (since actually turns-out we don't have enough samples to form a
             // processing frame, as we initially thought... which i don't know what has to do with
             // 'buffer overflow'?), is surely the desired behaviour here!?!?
+#ifndef _WIN32
+            BStat("ERR:TDStretchOverflow", [](Stat* zs) {
+                return zs->getCount() < 1 ? SC_OK : SC_ERROR;
+				});
+#endif
             break;
             //continue;    // just in case, shouldn't really happen
         }
