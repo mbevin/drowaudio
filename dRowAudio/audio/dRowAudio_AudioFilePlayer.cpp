@@ -204,6 +204,8 @@ bool AudioFilePlayer::setSourceWithReader (AudioFormatReader* reader)
 //==============================================================================
 void AudioFilePlayer::commonInitialise()
 {
-    audioTransportSource.addChangeListener (this);
+    // seems at this point, should be safe to assume not doing anything with the listener on
+    // another thread!? as its _crucial_ that we don't require the MessageManager lock here!!
+    audioTransportSource.addChangeListener (this, false);
     masterSource = &audioTransportSource;
 }
