@@ -176,29 +176,29 @@ public:
 	
     //==============================================================================
     /** Implementation of the AudioSource method. */
-    void prepareToPlay (int samplesPerBlockExpected, double sampleRate);
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override;
     
     /** Implementation of the AudioSource method. */
-    void releaseResources();
+    void releaseResources() override;
     
     /** Implementation of the AudioSource method. */
-    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill);
+    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override;
     
     //==============================================================================
     /** Sets the next read position in samples. */
-    void setNextReadPosition (int64 newPosition)    {   audioTransportSource.setNextReadPosition (newPosition);    }
+    void setNextReadPosition (int64 newPosition) override {   audioTransportSource.setNextReadPosition (newPosition);    }
     
     /** Returns the position from which the next block will be returned. */
-    int64 getNextReadPosition() const   {   return audioTransportSource.getNextReadPosition();    }
+    int64 getNextReadPosition() const override   {   return audioTransportSource.getNextReadPosition();    }
     
     /** Returns the total length of the stream (in samples). */
-    int64 getTotalLength() const        {   return audioTransportSource.getTotalLength(); }
+    int64 getTotalLength() const override        {   return audioTransportSource.getTotalLength(); }
     
     /** Returns true if this source is actually playing in a loop. */
-    bool isLooping() const              {   return audioTransportSource.isLooping();      }
+    bool isLooping() const override              {   return audioTransportSource.isLooping();      }
     
     /** Tells the source whether you'd like it to play in a loop. */
-    virtual void setLooping (bool shouldLoop);
+    virtual void setLooping (bool shouldLoop) override;
 
     //==============================================================================
     /** @internal. */
