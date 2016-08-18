@@ -62,7 +62,9 @@ void SoundTouchAudioSource::setPlaybackSettings (SoundTouchProcessor::PlaybackSe
 //==============================================================================
 void SoundTouchAudioSource::prepareToPlay (int /*samplesPerBlockExpected*/, double sampleRate_)
 {
-    soundTouchProcessor.initialise (numberOfChannels, sampleRate);
+    // Mike: this was passing sampleRate (i.e. the member variable) here, which could be seemingly
+    // random values at this point!?!?!?!
+    soundTouchProcessor.initialise (numberOfChannels, sampleRate_);
     
     if (sampleRate_ != sampleRate
         || numberOfSamplesToBuffer != buffer.getNumSamples()
