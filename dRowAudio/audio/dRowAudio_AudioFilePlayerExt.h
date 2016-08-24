@@ -87,7 +87,7 @@ public:
     
     /** Returns the current SoundTouchProcessor settings.
      */
-    SoundTouchProcessor::PlaybackSettings getPlaybackSettings();
+    SoundTouchProcessor::PlaybackSettings getPlaybackSettings()const;
     
     /** Sets whether the source should play forwards or backwards.
      */

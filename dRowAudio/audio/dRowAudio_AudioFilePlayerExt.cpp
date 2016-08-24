@@ -54,7 +54,7 @@ void AudioFilePlayerExt::setPlaybackSettings (SoundTouchProcessor::PlaybackSetti
     listeners.call (&Listener::audioFilePlayerSettingChanged, this, SoundTouchSetting);
 }
 
-SoundTouchProcessor::PlaybackSettings AudioFilePlayerExt::getPlaybackSettings()
+SoundTouchProcessor::PlaybackSettings AudioFilePlayerExt::getPlaybackSettings()const
 {
     if (soundTouchAudioSource != nullptr)
         return soundTouchAudioSource->getPlaybackSettings();

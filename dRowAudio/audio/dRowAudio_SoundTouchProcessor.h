@@ -122,7 +122,7 @@ public:
     void setPlaybackSettings (PlaybackSettings newSettings);
     
     /** Returns all of the settings. */
-    PlaybackSettings getPlaybackSettings()                      {   return settings;                            }
+    PlaybackSettings getPlaybackSettings()const                 {   return settings;                            }
     
     /** Sets a custom SoundTouch setting.
         See SoundTouch.h for details.

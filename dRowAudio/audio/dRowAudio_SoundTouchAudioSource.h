@@ -65,7 +65,9 @@ public:
     
     /** Returns all of the settings.
      */
-    SoundTouchProcessor::PlaybackSettings getPlaybackSettings() {   return soundTouchProcessor.getPlaybackSettings();    }
+    SoundTouchProcessor::PlaybackSettings getPlaybackSettings()const {
+        return soundTouchProcessor.getPlaybackSettings();
+    }
     
     /** Returns the lock used when setting the buffer read positions.
      */
