@@ -50,8 +50,8 @@
 // just to help debug an issue that hopefully 'fixed' ...
 #ifndef _WIN32
 #include "BStats.h"
-#endif
 #include "Core/BAssert.h"
+#endif
 
 #include "STTypes.h"
 #include "cpu_detect.h"
@@ -140,8 +140,10 @@ void TDStretch::setParameters(int aSampleRate, int aSequenceMS,
 
     // Mike: sanity check... it was passing crazy (uninitialized) values into here due to bizarre
     // bug in SoundTouchAudioSource
+#ifndef _WIN32
     BAssertInRange(aSampleRate, 10, 400000);
-
+#endif
+	
     if (aSequenceMS > 0)
     {
         this->sequenceMs = aSequenceMS;
@@ -561,8 +563,10 @@ void TDStretch::calcSeqParameters()
     {
         // if this happens, we'll be screwed later (as it'll want to output 0 samples
         // all the time), at least, if we leave it using the below logic ...
+#ifndef _WIN32
         BAssert(false);
-        
+#endif
+		 
         seekWindowLength = 2 * overlapLength;
     }
     seekLength = (sampleRate * seekWindowMs) / 1000;
