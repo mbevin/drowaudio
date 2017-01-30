@@ -51,6 +51,7 @@
 #ifndef _WIN32
 #include "BStats.h"
 #include "Core/BAssert.h"
+using namespace BTools;
 #endif
 
 #include "STTypes.h"
